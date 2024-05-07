@@ -8,6 +8,8 @@
 
 	<PropertyGroup>
 		<PublishAot>true</PublishAot>
+		<IsAotCompatible>true</IsAotCompatible>
+		<!--To publish, use the dotnet cli "dotnet publish -r win-x64 -c Release"-->
 	</PropertyGroup>
 	
 </Project>
