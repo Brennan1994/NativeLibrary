@@ -48,4 +48,24 @@ public class Class1
         // Return pointer
         return sumPointer;
     }
+
+    [UnmanagedCallersOnly(EntryPoint = "aotsample_passArray")]
+    public static (IntPtr,int) passArray(IntPtr ptrToArray, int length)
+    {
+        Marshal.PtrToStructure(ptrToArray, new int[length]);
+        int[] array = new int[length];
+        IntPtr ptr = Marshal.AllocHGlobal(array.Length * sizeof(int));
+        Marshal.Copy(array, 0, ptr, array.Length);
+        return (ptr, length);
+    }
+
+    [UnmanagedCallersOnly(EntryPoint = "aotsample_passArrayWithGC")]
+    public static (IntPtr, int) passArrayWithGC(IntPtr ptrToArray, int length, int trashArrayCount)
+    {
+        for(int i = 0; i < trashArrayCount;)
+        {
+            var trashArray = new int[10000]; 
+        }
+        return (ptrToArray, length);
+    }
 }

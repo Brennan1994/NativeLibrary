@@ -40,3 +40,5 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+/src/main/resources/hw.dll
+/src/main/resources/hwamd64.dll
